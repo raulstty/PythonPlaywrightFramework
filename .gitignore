@@ -1,0 +1,17 @@
+# Virtual environment - never commit this; requirements.txt is what makes it reproducible
+venv/
+
+# Python bytecode cache - regenerated automatically, machine-specific
+__pycache__/
+*.pyc
+
+# pytest's internal cache (last-failed tests, etc.) - local state, not source
+.pytest_cache/
+
+# Secrets / per-environment config - never commit credentials or environment-specific URLs
+.env
+
+# Test run artifacts - regenerated every run, would cause noisy diffs if committed
+test-results/
+playwright-report/
+reports/
