@@ -13,5 +13,5 @@ def home_page(page: Page):
 @pytest.fixture
 def login_page(page: Page) -> LoginPage:
     login = LoginPage(page)
-    login.navigate(login.url)
+    login.navigate(login.PATH)
     return login

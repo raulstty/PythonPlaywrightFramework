@@ -4,7 +4,7 @@ from pages.base_page import BasePage
 
 
 class LoginPage(BasePage):
-    url = "https://practicetestautomation.com/practice-test-login/"
+    PATH = "/practice-test-login/"
     def __init__(self,page: Page):
         super().__init__(page)
         self.username_input = page.get_by_label("Username")
@@ -17,3 +17,5 @@ class LoginPage(BasePage):
         self.password_input.fill(password)
         self.submit_button.click()
         
+    def get_error_message(self) -> str:
+        return self.error_message.inner_text()
