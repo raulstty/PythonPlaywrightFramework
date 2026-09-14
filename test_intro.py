@@ -32,4 +32,4 @@ def test_successful_login(login_page: LoginPage):
 )
 def test_invalid_login_shows_error_message(login_page: LoginPage, case):
     login_page.login(case["username"], case["password"])
-    expect(login_page.error_message).to_have_text(case["expected_error"])   
+    expect(login_page.error_message).to_have_text(case["expected_error"]) 
