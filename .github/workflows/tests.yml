@@ -25,7 +25,7 @@ jobs:
         run: playwright install --with-deps chromium
 
       - name: Run tests
-        run: pytest test_intro.py -v --html=reports/report.html --self-contained-html
+        run: pytest -v --html=reports/report.html --self-contained-html
 
       - name: Upload HTML report
         if: always()
