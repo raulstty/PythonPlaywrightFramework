@@ -5,7 +5,9 @@ import re
 from playwright.sync_api import Page, expect
 import pytest
 
+from api.rooms_client import RoomsClient
 from pages.login_page import LoginPage
+from pages.rooms_page import RoomsPage
 
 DATA_FILE = Path(__file__).parent / "data" / "login_test_data.json"
 with open(DATA_FILE) as f:
@@ -30,6 +32,13 @@ def test_successful_login(login_page: LoginPage):
     invalid_login_cases,
     ids=[case["username"] for case in invalid_login_cases],
 )
+
 def test_invalid_login_shows_error_message(login_page: LoginPage, case):
     login_page.login(case["username"], case["password"])
     expect(login_page.error_message).to_have_text(case["expected_error"]) 
+    
+
+
+    
+    
+    

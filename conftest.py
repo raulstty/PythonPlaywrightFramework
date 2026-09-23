@@ -1,9 +1,11 @@
 
 from playwright.sync_api import Page ,Playwright
 from api.posts_client import PostsClient
+from api.rooms_client import RoomsClient
 import pytest
 
 from pages.login_page import LoginPage
+from pages.rooms_page import RoomsPage
 
 
 @pytest.fixture
@@ -36,4 +38,11 @@ def api_context(playwright: Playwright, pytestconfig):
 def posts_client(api_context) -> PostsClient:
     return PostsClient(api_context)
     
+@pytest.fixture
+def rooms_client(api_context) -> RoomsClient:
+    return RoomsClient(api_context)
+
+@pytest.fixture
+def rooms_page(page:Page) ->RoomsPage:
+    return RoomsPage(page)
     
