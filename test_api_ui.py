@@ -11,7 +11,7 @@ def test_rooms_shown_in_ui_match_api(rooms_client: RoomsClient,rooms_page: Rooms
     
     rooms_page.open()
     
-    expect(rooms_page.room_card).to_have_count(len(api_rooms))
+    expect(rooms_page.room_cards).to_have_count(len(api_rooms))
     for room in api_rooms:
         card = rooms_page.room_card(room["type"])
         expect(card).to_contain_text(room["description"])
