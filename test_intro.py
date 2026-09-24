@@ -1,13 +1,10 @@
 import json
 from pathlib import Path
 import re
-
 from playwright.sync_api import Page, expect
 import pytest
-
-from api.rooms_client import RoomsClient
+from config.setting import LOGIN_PASSWORD, LOGIN_USERNAME
 from pages.login_page import LoginPage
-from pages.rooms_page import RoomsPage
 
 DATA_FILE = Path(__file__).parent / "data" / "login_test_data.json"
 with open(DATA_FILE) as f:
@@ -24,7 +21,7 @@ def test_playwright_homepage_title(home_page: Page):
     assert "Playwright" in home_page.title()
     
 def test_successful_login(login_page: LoginPage):
-    login_page.login("student", "Password123")
+    login_page.login(LOGIN_USERNAME, LOGIN_PASSWORD)
     expect(login_page.page).to_have_url(re.compile(r"/logged-in-successfully/"))
     
 @pytest.mark.parametrize(

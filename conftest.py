@@ -5,6 +5,7 @@ from api.rooms_client import RoomsClient
 import pytest
 import re
 
+from config.setting import ADMIN_USERNAME , ADMIN_PASSWORD, API_BASE_URL
 from pages.login_page import LoginPage
 from pages.rooms_page import RoomsPage
 from pages.admin_page import AdminPage
@@ -24,7 +25,7 @@ def login_page(page: Page) -> LoginPage:
 def pytest_addoption(parser):
     parser.addoption(
         "--api-base-url",
-        default="https://jsonplaceholder.typicode.com",
+        default=API_BASE_URL,
         help = "base url for the API under test"
     )
     
@@ -54,7 +55,7 @@ def admin_storage_state(browser,tmp_path_factory) ->str:
     context = browser.new_context()
     admin = AdminPage(context.new_page())
     admin.open()
-    admin.login("admin","password")
+    admin.login(ADMIN_USERNAME,ADMIN_PASSWORD)
     expect(admin.page).to_have_url(re.compile(r"admin/rooms"))
     context.storage_state(path=state_file)
     context.close()

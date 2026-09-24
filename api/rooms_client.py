@@ -1,10 +1,11 @@
 from playwright.sync_api import APIResponse
 
 from api.base_client import BaseClient
+from config.setting import ROOMS_SITE_URL
 
 
 class RoomsClient(BaseClient):
-    URL = "https://automationintesting.online/api/room/"
+    URL = f"{ROOMS_SITE_URL}/api/room/"
     
     def get_rooms(self) -> APIResponse:
         return self.get(self.URL)

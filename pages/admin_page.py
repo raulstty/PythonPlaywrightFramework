@@ -1,8 +1,9 @@
+from config.setting import ROOMS_SITE_URL
 from pages.base_page import BasePage
 
 
 class AdminPage(BasePage):
-    URL = "https://automationintesting.online/admin"
+    URL = f"{ROOMS_SITE_URL}/admin"
     def __init__(self, page):
         super().__init__(page)
         self.username_input = page.locator("#username")

@@ -25,6 +25,11 @@ jobs:
         run: playwright install --with-deps chromium
 
       - name: Run tests
+        env:
+          ADMIN_USERNAME: ${{ secrets.ADMIN_USERNAME }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+          LOGIN_USERNAME: ${{ secrets.LOGIN_USERNAME }}
+          LOGIN_PASSWORD: ${{ secrets.LOGIN_PASSWORD }}
         run: pytest -v --html=reports/report.html --self-contained-html
 
       - name: Upload HTML report

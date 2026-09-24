@@ -2,6 +2,7 @@ import re
 
 from playwright.sync_api import Page, expect
 
+from config.setting import ROOMS_SITE_URL
 from pages.admin_page import AdminPage
 
 
@@ -22,6 +23,6 @@ def test_normal_page_has_no_saved_session(page: Page):
 
 
 def test_session_storage_read_write(page: Page):
-    page.goto("https://automationintesting.online/")
+    page.goto(f"{ROOMS_SITE_URL}/")
     page.evaluate("sessionStorage.setItem('theme', 'dark')")
     assert page.evaluate("sessionStorage.getItem('theme')") == "dark"
